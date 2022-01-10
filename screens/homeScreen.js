@@ -8,6 +8,20 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function HomeScreen({ navigation }) {
 
+  const list = [
+    {
+      name: 'Olinda',
+      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+      subtitle: 'Vice President'
+    },
+    ,{
+      name: 'Recife',
+      avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+      subtitle: 'Vice Chairman'
+    },
+   
+  ]
+
     return (
       
     <SafeAreaProvider>
@@ -40,8 +54,11 @@ export default function HomeScreen({ navigation }) {
             placeholder="Search..."
       />
     <View style={styles.card}>
+    {
+    list.map((l, i) => (
+     
       <Card>
-        <Card.Title>PRAÇA BELA VISTA</Card.Title>
+        <Card.Title>{l.name}</Card.Title>
         <Card.Divider />
         <Card.Image
           style={{ padding: 0 }}
@@ -51,17 +68,8 @@ export default function HomeScreen({ navigation }) {
             }}
         />  
       </Card>
-      <Card>
-        <Card.Title>CATEDRAL CENTRAL</Card.Title>
-        <Card.Divider />
-        <Card.Image
-          style={{ padding: 0 }}
-          source={{
-            uri:
-                'https://media-cdn.tripadvisor.com/media/photo-s/06/0f/8c/de/catedral-igreja-sagrado.jpg',
-            }}
-        />  
-      </Card>
+       ))
+      }
     </View>  
     </SafeAreaProvider>
     );
