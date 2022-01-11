@@ -1,18 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import HomeScreen from './screens/homeScreen';
+// import Cadastro from './cadastro';
+import Cadastro from './screens/cadastro';
+import HomeScreen from './screens/inicio';
+import Login from './screens/login';
+import UserLogado from './screens/userLogado';
+
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'Tela Inicial'}}/>
+      <Stack.Navigator initialRouteName="inicio">
+        <Stack.Screen name="userLogado" component={UserLogado} options={{ headerShown: false }} />
+        <Stack.Screen name="login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="inicio" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="cadastro" component={Cadastro} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
