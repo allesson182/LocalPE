@@ -1,10 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, StatusBar, TextInput, Touchable, TouchableOpacity } from 'react-native';
 import { Linking, StyleProp, TextStyle, ViewStyle, } from 'react-native';
 import { FlatList, ActivityIndicator } from 'react-native';
 import { Header as HeaderRNE, HeaderProps, Icon, SafeAreaView, Card } from 'react-native-elements';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import axios from 'axios';
+import ListaLugares from '../data/lugares.js'
 import {
     Avatar,
     Button,
@@ -24,19 +26,23 @@ import {
 
 export default function HomeScreen({ navigation }) {
 
-    const list = [
-        {
-            name: 'Olinda',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-            subtitle: 'Vice President'
-        },
-        , {
-            name: 'Recife',
-            avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-            subtitle: 'Vice Chairman'
-        },
+  const [dados,setDados] = useState([]);
 
-    ]
+  useEffect(() => {
+
+    function resgatarDados() {
+      axios('http://localhost:19006/listarLugares')
+      .then(function (response) {
+        setDados(response.data);
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+    resgatarDados()
+
+  },[])
 
     return (
 
@@ -72,22 +78,22 @@ export default function HomeScreen({ navigation }) {
             <VStack alignItems="center">
                 <View style={styles.card}>
                     {
-                        list.map((l, i) => (
-
-                            <Card>
-                                <Card.Title>{l.name}</Card.Title>
-                                <Card.Divider />
-                                <Card.Image
-                                    style={{ padding: 0 }}
-                                    source={{
-                                        uri:
-                                            'https://www.feriasbrasil.com.br/fotosfb/802222889-MOB.jpg',
-                                    }}
-                                />
-                            </Card>
-                        ))
+                    ListaLugares.map((l, i) => (
+                    
+                    <Card>
+                        <Card.Title>{l.name}</Card.Title>
+                        <Card.Divider />
+                        <Card.Image
+                        style={{ padding: 0 }}
+                        source={{
+                            uri:
+                                l.avatar_url,
+                            }}
+                        />  
+                    </Card>
+                    ))
                     }
-                </View>
+                </View>  
             </VStack>
 
 
@@ -181,7 +187,7 @@ const styles = StyleSheet.create({
         borderRadius: '2%',
         position: 'absolute',
 
-        top: 190,
+        top: 220,
         shadowColor: '#000',
         shadowOffset: {
             width: 0,

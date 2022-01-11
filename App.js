@@ -2,9 +2,8 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// import Cadastro from './cadastro';
 import Cadastro from './screens/cadastro';
-import HomeScreen from './screens/inicio';
+import HomeScreen from './screens/homeScreen';
 import Login from './screens/login';
 import UserLogado from './screens/userLogado';
 
