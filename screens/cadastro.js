@@ -106,7 +106,7 @@ export default function Cadastro({ navigation }) {
                             Esqueceu a senha?
                         </Link>
                         <Button onPress={() => navigation.navigate('inicio')} style={styles.button} mt="2" colorScheme="indigo" _text={{ color: 'white' }}>
-                            Cadastrar
+                            Criar conta
                         </Button>
 
                     </VStack>
