@@ -49,7 +49,7 @@ export default function Cadastro({ navigation }) {
                     }
                 //centerComponent={{ text: 'Header', style: styles.heading }}
                 />
-                <Text style={styles.loginText}>Fazer Login</Text>
+                <Text style={styles.loginText}>Cadastrar</Text>
                 <View style={styles.boxInputs}>
                     <Text style={styles.textoMenor}>Logar com</Text>
                     <Button style={styles.googleButton} mt="2" colorScheme="indigo" _text={{ color: '#EA4335' }}>
